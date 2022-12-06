@@ -1,4 +1,4 @@
-# app-icon
+# gcon
 
 [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.guardrails.io/dwmkerr/app-icon.svg?token=569f2cc38a148f785f3a38ef0bcf5f5964995d7ca625abfad9956b14bd06ad96&provider=github)](https://dashboard.guardrails.io/default/gh/dwmkerr/app-icon) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
@@ -40,11 +40,11 @@ Create a single large `icon.png` at least 192 pixels square, or run `app-icon in
 
 ```bash
 # If you are using npm 5.2 onwards...
-npx app-icon generate
+npx gcon generate
 
 # ...for older versions of npm
-npm install -g app-icon
-app-icon generate
+npm install -g gcon
+gcon generate
 ```
 
 You can also use the module directly in node:
@@ -60,7 +60,7 @@ You can also use the module directly in node:
  *   },
  * }
  */
-import appIcon from 'app-icon';
+import appIcon from 'gcon';
 
 Promise.resolve()
   .then(() => appIcon.labelImage('./inputfile.png', './out.png', 'UAT', '0.12.3'))
@@ -79,7 +79,7 @@ Promise.resolve()
 Install with:
 
 ```bash
-npm install -g app-icon
+npm install -g gcon
 ```
 
 You will need [imagemagick](http://www.imagemagick.org/) installed:
@@ -92,30 +92,30 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-The `app-icon` tool can be used to create a simple template icon, generate icons of all sizes from a template icon, or label icons.
+The `gcon` tool can be used to create a simple template icon, generate icons of all sizes from a template icon, or label icons.
 
 ### Initialising
 
 If you do not already have a single icon to use as the main icon for your project, you can create one with the `init` command:
 
 ```bash
-app-icon init                    # generates an icon named icon.png
+gcon init                    # generates an icon named icon.png
 ```
 
 You can also add a simple label to the icon.
 
 ```bash
-app-icon init --caption "App"    # creates an icon with the text 'App'
+gcon init --caption "App"    # creates an icon with the text 'App'
 ```
 
 To create template [Adaptive Icons for Android](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) include the `--adaptive-icons` flag.
 
 ### Generating Icons
 
-Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root (or run `app-icon init`). To automatically generate icons of all sizes for all app projects in the same folder, run:
+Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root (or run `gcon init`). To automatically generate icons of all sizes for all app projects in the same folder, run:
 
 ```bash
-app-icon generate
+gcon generate
 ```
 
 If an iOS project is present, then the icon will be copied at all required sizes to:
@@ -133,8 +133,8 @@ If an Android project is present, then the icon will be copied at all required s
 You can limit the platforms which icons are generated for with the `--platforms` flag, specifying:
 
 ```bash
-app-icon generate --platforms=ios
-app-icon generate --platforms=android,ios
+gcon generate --platforms=ios
+gcon generate --platforms=android,ios
 ```
 
 By default the tool will generate icons for both platforms.
@@ -142,17 +142,17 @@ By default the tool will generate icons for both platforms.
 You can search in specific directories for icons, if the presence of other projects is interfering, just use the `--search` or `-s` parameter:
 
 ```bash
-app-icon generate -s ./ios -s ./android
+gcon generate -s ./ios -s ./android
 ```
 
-You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon generate -h` to see the options.
+You can specify the path to the source icon, as well as the folder to search for app projects, just run `gcon generate -h` to see the options.
 
 ### Labelling Icons
 
 Add labels to an icon with the command below:
 
 ```bash
-app-icon label -i icon.png -o output.png --top UAT --bottom 0.12.3
+gcon label -i icon.png -o output.png --top UAT --bottom 0.12.3
 ```
 
 This would produce output like the below image:
@@ -244,10 +244,10 @@ The builds use custom docker images which contain the appropriate Node.js runtim
 
 ### Debugging
 
-The [`debug`](https://www.npmjs.com/package/debug) package is used to support low-level debugging. If you want to see debug messages when running the tool, just set the `DEBUG` environment variable to `app-icon`:
+The [`debug`](https://www.npmjs.com/package/debug) package is used to support low-level debugging. If you want to see debug messages when running the tool, just set the `DEBUG` environment variable to `gcon`:
 
 ```sh
-DEBUG=app-icon app-icon generate --platforms android
+DEBUG=gcon gcon generate --platforms android
 ```
 
 ## The Sample Projects
@@ -282,18 +282,18 @@ To run the native apps, open the `./test/NativeApp` directory, then open the iOS
 
 ## Compatibility
 
-`app-icon` dependds on [ImageMagick](https://www.imagemagick.org/). ImageMagick 6 is installed by default on many Linux distributions, as well as OSX. Some platforms are regularly tested (such as Ubuntu, via CircleCI). Other platforms *may* work but are not tested when I make a release, so your results may vary.
+`gcon` dependds on [ImageMagick](https://www.imagemagick.org/). ImageMagick 6 is installed by default on many Linux distributions, as well as OSX. Some platforms are regularly tested (such as Ubuntu, via CircleCI). Other platforms *may* work but are not tested when I make a release, so your results may vary.
 
 The table below shows the current confirmed compatibility:
 
-| Platform  | `app-icon` | ImageMagick | Status |
+| Platform  | `gcon` | ImageMagick | Status |
 |-----------|------------|-------------|--------|
 | OSX       | `0.6.x`    | 6, 7        | ✅     |
 | Ubuntu 14 | `0.6.x`    | 6           | ✅     |
 
 ## Troubleshooting
 
-**Images labelled with `app-icon label` have the text slightly vertically offset**
+**Images labelled with `gcon label` have the text slightly vertically offset**
 
 This seems to be an issue with Imagemagick 6 - try upgrading to 7.
 

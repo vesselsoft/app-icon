@@ -1,5 +1,5 @@
 const path = require('path');
-const debug = require('debug')('app-icon');
+const debug = require('debug')('gcon');
 const find = require('../utils/find');
 
 //  Create a regexp to exclude node modules, CordovaLib and build intermediates.

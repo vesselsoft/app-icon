@@ -131,11 +131,11 @@ program
 program.on('--help', () => {
   console.log('  Examples:');
   console.log('');
-  console.log('    $ app-icon generate');
-  console.log('    $ app-icon generate -i myicon.png -s ./app/cordova-app');
-  console.log('    $ app-icon label -i myicon.png -o myicon.out.png -t qa -b 1.2.3');
-  console.log('    $ app-icon init --caption "App"');
-  console.log('    $ app-icon init --caption "App" --adaptive-icons');
+  console.log('    $ gcon generate');
+  console.log('    $ gcon generate -i myicon.png -s ./app/cordova-app');
+  console.log('    $ gcon label -i myicon.png -o myicon.out.png -t qa -b 1.2.3');
+  console.log('    $ gcon init --caption "App"');
+  console.log('    $ gcon init --caption "App" --adaptive-icons');
   console.log('');
 });
 

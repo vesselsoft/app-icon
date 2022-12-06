@@ -1,5 +1,5 @@
 {
-  "name": "app-icon",
+  "name": "gcon",
   "version": "0.14.0",
   "description": "Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by cordova-icon.",
   "main": "./src/index.js",
@@ -7,10 +7,10 @@
     "node": ">=10"
   },
   "bin": {
-    "app-icon": "./bin/app-icon.js"
+    "gcon": "./bin/gcon.js"
   },
   "scripts": {
-    "start": "./bin/app-icon.js",
+    "start": "./bin/gcon.js",
     "test": "mocha --timeout 20000 ./src/{,**/}*.specs.js",
     "test:debug": "mocha -d -w ./src/{,**/}*.specs.js",
     "cov": "nyc mocha --timeout 20000 ./src/{,**/}*.specs.js",
