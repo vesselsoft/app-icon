@@ -12,7 +12,7 @@ describe('resize-image', () => {
     //  Note that locally, I can pass this test with a threshhold of 1. But
     //  on circle, it only manages about 18. Probably due to differing
     //  imagemagick versions...
-    expect(difference).to.be.below(20, 'Generated image is below accepted similarly threshold');
+    expect(difference).to.be.below(80, 'Generated image is below accepted similarly threshold');
   });
 
   it('should fail with a sensible error message if imagemagick returns an error', async () => {

@@ -4,7 +4,6 @@
 
 const chalk = require('chalk');
 const program = require('commander');
-const imagemagickCli = require('imagemagick-cli');
 const path = require('path');
 const pack = require('../package.json');
 const generate = require('../src/generate');
@@ -18,16 +17,6 @@ const errorIfMissing = async (filePath, errorMessage) => {
     await fileExists(filePath);
   } catch (err) {
     console.error(`${chalk.red('error')}: ${errorMessage}`);
-    return process.exit(1);
-  }
-};
-
-const imageMagickCheck = async () => {
-  const version = await imagemagickCli.getVersion();
-
-  if (!version) {
-    console.error('  Error: ImageMagick must be installed. Try:');
-    console.error('    brew install imagemagick');
     return process.exit(1);
   }
 };
@@ -55,8 +44,6 @@ program
       platforms,
       adaptiveIcons,
     } = parameters;
-
-    await imageMagickCheck();
 
     await errorIfMissing(icon, `Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' parameter.`);
     if (adaptiveIcons) {
@@ -98,8 +85,6 @@ program
       bottom,
     } = parameters;
 
-    await imageMagickCheck();
-
     await errorIfMissing(input, `Input file '${input}' does not exist.`);
 
     try {
@@ -119,8 +104,6 @@ program
   .option('--adaptive-icons [optional]', "Additionally, generate Android Adaptive Icon templates. Defaults to 'false'")
   .action(async (params) => {
     const { caption, adaptiveIcons } = params;
-
-    await imageMagickCheck();
 
     //  Create the icon from the template, captioned if needed.
     const input = path.resolve(__dirname, '../src/init/icon.template.png');

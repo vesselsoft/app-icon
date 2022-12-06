@@ -1,13 +1,11 @@
-const imagemagickCli = require('imagemagick-cli');
+const sharp = require('sharp');
 
 module.exports = async function getImageWidth(path) {
-  const { stdout } = await imagemagickCli.exec(`identify -format %w "${path}"`);
-  //  Attempt to turn the width into pixels.
-  const pixelWidth = parseInt(stdout, 10);
-  if (Number.isNaN(pixelWidth)) {
-    console.log(`returned width '${stdout}' cannot be parsed into a number`);
-    throw new Error(`Cannot parse returned width '${stdout}'`);
+  const metadata = await sharp(path).metadata();
+
+  if (Number.isNaN(metadata.width)) {
+    throw new Error(`Cannot parse returned width '${path}'`);
   }
 
-  return pixelWidth;
+  return metadata.width;
 };
